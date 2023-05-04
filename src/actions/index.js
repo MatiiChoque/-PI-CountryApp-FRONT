@@ -3,7 +3,7 @@ import axios from "axios";
 export const getCountries = () => {
   return async (dispatch) => {
     try {
-      var response = await axios.get("http://localhost:3001/countries");
+      var response = await axios.get("/countries");
       return dispatch({
         type: "GET_COUNTRIES",
         payload: response.data,
@@ -17,9 +17,7 @@ export const getCountries = () => {
 export const getNameCountries = (name) => {
   return async (dispatch) => {
     try {
-      var response = await axios.get(
-        `http://localhost:3001/countries?name=${name}`
-      );
+      var response = await axios.get(`/countries?name=${name}`);
       return dispatch({
         type: "GET_NAME_COUNTRIES",
         payload: response.data,
@@ -33,9 +31,7 @@ export const getNameCountries = (name) => {
 export const getDetailCountry = (idCountry) => {
   return async (dispatch) => {
     try {
-      var response = await axios.get(
-        `http://localhost:3001/countries/${idCountry}`
-      );
+      var response = await axios.get(`/countries/${idCountry}`);
       return dispatch({
         type: "GET_DETAIL_COUNTRY",
         payload: response.data,
@@ -49,7 +45,7 @@ export const getDetailCountry = (idCountry) => {
 export const getActivities = () => {
   return async (dispatch) => {
     try {
-      var act = await axios.get("http://localhost:3001/activities");
+      var act = await axios.get("/activities");
       return dispatch({
         type: "GET_ACTIVITIES",
         payload: act.data,
@@ -63,10 +59,7 @@ export const getActivities = () => {
 export const postActivity = (payload) => {
   return async (dispatch) => {
     try {
-      const response = await axios.post(
-        "http://localhost:3001/activities",
-        payload
-      );
+      const response = await axios.post("/activities", payload);
       return response;
     } catch (error) {
       console.log(error.message);
